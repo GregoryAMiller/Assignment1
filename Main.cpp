@@ -80,11 +80,12 @@ void findRichest(person P[], int numAccounts){  // finds the richest person and 
 }
 
 void deposit(char custName[], person P[], int numAccounts){ // pick the person you want to deposit and increase their savings by that ammount
-    int cmpValue = 1;   // since strcmp returns a -1,1 if the strings are not equal and returns 0 if they are we want the base case to be false(-1/1)
+    int cmpValue = -1;   // since strcmp returns a -1,1 if the strings are not equal and returns 0 if they are we want the base case to be false(-1/1)
+    // i used to have cmpValue = 1 but if index 1 of P then we would get a bug and would cout the name entered does not match
     for(int i = 0; i < numAccounts; i++){   // loop through the struct array
         if(strcmp(custName, P[i].name) == 0) { cmpValue = i; break;}    // if when we compare the name given to the names in the struct array and there is a match (strcmp returns 0/ == 0) we want to set cmpValue to the index that the strcmp == 0 and break
     }
-    if(cmpValue == 1) { cout << "The name you entered does not match our records";} // if we didnt find a match
+    if(cmpValue == -1) { cout << "The name you entered does not match our records";} // if we didnt find a match
     cout << P[cmpValue].name << ", how much would you like to deposit? ";
     float depositAmount = 0;
     cin >> depositAmount;
