@@ -21,7 +21,7 @@ void newCopy(string file, person P[], int);
 int main() {
     int n = 0;
     int numAccounts = numberOfRecords(n);
-    person *P = new person[numAccounts];
+    person P[numAccounts];
     fillPerson(P, numAccounts);
     display(P, numAccounts);
     findRichest(P, numAccounts);
@@ -30,7 +30,6 @@ int main() {
     cin.getline(custName, 20);  // we want to make sure that the name they enter can fit into our char name[20]
     deposit(custName, P, numAccounts);
     newCopy("data.txt", P, numAccounts);
-    delete [] P;
     
     return 0;
 }
